@@ -1,8 +1,8 @@
 # Day 1 Submission: Understanding Unit Testing
 
-**Student:** Bilal Oyeleke Soliu  
-**Workshop:** Example-Workshop  
-**Day:** 1
+**Student:** Bonson Adem Alo  
+**Workshop:** Real-Workshop  
+**Day:** 2
 
 ---
 
