@@ -1,0 +1,306 @@
+# Day 1: Fundamentals of Git and Open Source Contribution
+
+## Objective
+
+By the end of this session, you should be able to use Git and GitHub confidently enough to contribute to a shared project. You will fork this repository, work inside your own submission folder, practice commits and branches, handle a merge conflict, and finish by opening a Pull Request — the same habit open-source contributors use every day.
+
+## Background
+
+Git helps you track changes. GitHub helps teams share those changes. In TechNexus Cohort 2, we do not practice in a throwaway repo. You will learn by contributing to **this** organization repository, inside a folder that belongs to you. That is intentional: open-source contribution is not just knowing commands — it is knowing where your work belongs, how to keep it clean, and how to submit it for review.
+
+## Where You Will Work
+
+Everything you create today goes here:
+
+```text
+Software_Engineering/Mastering_Git_and_Open_Source_Contribution/submissions/Day-1/<Your_First_Middle_Last>/
+```
+
+Example:
+
+```text
+Software_Engineering/Mastering_Git_and_Open_Source_Contribution/submissions/Day-1/Bilal_Oyeleke_Soliu/
+```
+
+That folder is your workspace root. Build every file and directory inside it.
+
+Please do not touch another student’s folder, and do not edit anything under `tasks/`.
+
+---
+
+## Task Instructions
+
+### 1. Get Ready on GitHub
+
+If you do not have a GitHub account yet, create one here: [https://github.com](https://github.com)
+
+Next, create a Personal Access Token so you can authenticate when you push code:
+
+- Guide: [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
+- Treat the token like a password. Never commit it.
+
+When you are done, your token screen should look similar to this:
+
+![Personal Access Token example](../resources/personal_access_token.png)
+
+Now fork the TechNexus Cohort 2 repository:
+
+1. Open [https://github.com/TechNexusClub/TechNexus_Cohort_2](https://github.com/TechNexusClub/TechNexus_Cohort_2)
+2. Click **Fork**
+
+![Fork the repository](../resources/fork_repository.png)
+
+Clone your fork:
+
+```bash
+git clone https://github.com/<YOUR_USERNAME>/TechNexus_Cohort_2.git
+cd TechNexus_Cohort_2
+```
+
+Or with a token:
+
+```bash
+git clone https://<YOUR_PERSONAL_TOKEN>@github.com/<YOUR_USERNAME>/TechNexus_Cohort_2.git
+cd TechNexus_Cohort_2
+```
+
+Tell Git who you are:
+
+```bash
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
+```
+
+Create your submission folder and move into it:
+
+```bash
+mkdir -p Software_Engineering/Mastering_Git_and_Open_Source_Contribution/submissions/Day-1/<Your_First_Middle_Last>
+cd Software_Engineering/Mastering_Git_and_Open_Source_Contribution/submissions/Day-1/<Your_First_Middle_Last>
+```
+
+Create your first `README.md`:
+
+```bash
+echo 'My first readme' > README.md
+cat README.md
+```
+
+Then commit and push:
+
+```bash
+git add .
+git commit -m "My first commit"
+git push origin main
+```
+
+You are ready when your fork shows `README.md` in your Day-1 folder with the text `My first readme`.
+
+---
+
+### 2. Own Your Submission Folder
+
+Open the `README.md` inside your student folder and replace the content with your **full name**.
+
+Commit and push again.
+
+Your folder should now look like this:
+
+```text
+<Your_First_Middle_Last>/
+└── README.md
+```
+
+---
+
+### 3. Start Building Inside Your Folder
+
+Right now your folder is almost empty. Let’s give it a simple project shape.
+
+Still inside:
+
+```text
+.../submissions/Day-1/<Your_First_Middle_Last>/
+```
+
+1. Create these directories: `bash`, `c`, `js`
+2. Create these empty files:
+   - `c/c_is_fun.c`
+   - `js/main.js`
+   - `js/index.js`
+3. Create `bash/technexus` with exactly:
+
+   ```bash
+   #!/bin/bash
+   echo "TechNexus"
+   ```
+
+4. Create `bash/school` with exactly:
+
+   ```bash
+   #!/bin/bash
+   echo "Albukhary International University"
+   ```
+
+5. Stage everything, commit with the message `Starting to code today, so cool`, and push to your fork.
+
+You should now have:
+
+- `bash/technexus`
+- `bash/school`
+- `c/c_is_fun.c`
+- `js/main.js`
+- `js/index.js`
+
+---
+
+### 4. Learn to Work on a Branch
+
+In open source, you rarely edit `main` directly while experimenting. A branch gives you a safe copy of the project so you can try ideas without breaking the shared line of work.
+
+Branches are useful when you want to:
+
+- build a feature without disturbing stable code
+- collaborate without stepping on each other
+- keep review clean and intentional
+
+Create a branch called `update_script`. On that branch, inside your student folder:
+
+1. Create an empty file named `bash/98`
+2. In `bash/technexus`, change `echo "TechNexus"` to `echo "TechNexus School"`
+3. In `bash/school`, change `echo "Albukhary International University"` to `echo "The school is open!"`
+4. Commit with the message `My personal work`
+5. Push the branch to your fork
+
+![Create and push a branch](../resources/create_branch.png)
+
+Good. Your feature work is isolated.
+
+Now imagine a mentor asks for an urgent fix on `main`:
+
+1. Switch back to `main`
+2. In `bash/technexus`, change `echo "TechNexus"` to `echo "TechNexus Cohort is so cool!"`
+3. Delete the `js` directory
+4. Commit with the message `Hot fix` and push
+
+After this section, you should understand why `update_script` and `main` can tell different stories about the same files.
+
+---
+
+### 5. Stay in Sync with GitHub
+
+Contributors do not work alone. Someone else — or even you, from the browser — may change the remote before you do.
+
+For this part only, edit `README.md` in your student folder from the **GitHub website** on your fork’s `main` branch. This is the only time today you should commit from the GitHub UI.
+
+![Edit a file on GitHub](../resources/edit_on_github.png)
+
+Then return to your terminal and:
+
+1. Bring the remote `main` changes into your local copy
+2. Create a file named `up_to_date` in your student folder
+3. Write the exact git command you used into that file
+4. Commit with the message `How to be up to date in git` and push
+
+You should end with an updated `README.md` and a new `up_to_date` file.
+
+---
+
+### 6. Resolve Your First Merge Conflict
+
+Sooner or later, two branches will touch the same lines. That is normal. What matters is how you resolve it.
+
+Merge `update_script` into `main`:
+
+```bash
+git checkout main
+git merge update_script
+```
+
+Expect something like this:
+
+```text
+CONFLICT (content): Merge conflict in bash/technexus
+```
+
+![Merge conflict example](../resources/merge_conflict.png)
+
+Resolve it by keeping the version from `update_script`, finish the merge, and push.
+
+When you are done, `main` should include:
+
+- the work from `update_script` (`bash/98` and the two updated scripts), and
+- the earlier `main` changes (including the deleted `js` folder),
+
+with no conflict markers left behind.
+
+---
+
+### 7. Protect the Repository with `.gitignore`
+
+Not every file belongs in Git. Backup files, secrets, and local editor junk should stay on your machine.
+
+Create a `.gitignore` at the root of your student folder and add a rule that ignores files ending with `~` (common Emacs backup files).
+
+Commit and push it.
+
+---
+
+### 8. Submit Your Work with a Pull Request
+
+This is the open-source finish line for today.
+
+When your folder is complete on your fork:
+
+1. Open [https://github.com/TechNexusClub/TechNexus_Cohort_2](https://github.com/TechNexusClub/TechNexus_Cohort_2)
+2. Go to **Pull requests** → **New pull request**
+3. Compare across forks if needed
+4. Set:
+   - **base:** `TechNexusClub/TechNexus_Cohort_2` → `main`
+   - **compare:** your fork → the branch with your finished work (usually `main`)
+5. Title it clearly, for example:
+
+   ```text
+   Add Day-1 Git fundamentals submission for <Your_First_Middle_Last>
+   ```
+
+6. In the description, briefly say what you practiced.
+7. Open the PR and wait for review.
+
+![Open a pull request](../resources/open_pull_request.png)
+
+---
+
+## Expected Final Folder Structure
+
+```text
+Software_Engineering/Mastering_Git_and_Open_Source_Contribution/submissions/Day-1/<Your_First_Middle_Last>/
+├── README.md
+├── up_to_date
+├── .gitignore
+├── bash/
+│   ├── technexus
+│   ├── school
+│   └── 98
+└── c/
+    └── c_is_fun.c
+```
+
+Remember: `js/` should no longer be there after the hot fix.
+
+---
+
+## Deadline
+
+Submit your Pull Request by **[DAY / TIME]**.
+
+## Resources
+
+- [Git Handbook (GitHub)](https://guides.github.com/introduction/git-handbook/)
+- [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
+- [Git Branching – Basic Branching and Merging](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
+- [gitignore documentation](https://git-scm.com/docs/gitignore)
+- Workshop images and extras: `Software_Engineering/Mastering_Git_and_Open_Source_Contribution/resources/`
+
+---
+
+Take your time, read each step carefully, and ask questions when something is unclear. See you in the PR reviews.

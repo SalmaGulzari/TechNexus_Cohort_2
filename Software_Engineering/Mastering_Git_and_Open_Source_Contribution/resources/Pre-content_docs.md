@@ -1,133 +1,329 @@
-# Source code management
+# Source Code Management
 
-## What is source code management?
+## What is Source Code Management?
 
-It allows a developer to organize code iterations chronologically, and version it for an application. The most powerful features of source code management systems are in how they allow teams of very diverse sizes to work together on the same application simultaneously.
+Source Code Management (SCM) is a system that helps me keep track of changes made to my code over time. Instead of creating multiple copies of a project, SCM records every change, making it easy to go back to previous versions whenever needed.
 
-Some terms that are common to all of them:
+One of its biggest advantages is collaboration. Multiple developers can work on the same project at the same time without constantly overwriting each other's work.
 
-- A project is called a **repository**, representing the index/the filesystem root of your project.
-- Developers might create **branches** of the codebase, that they will iterate on separately to other developers. For instance, a branch can be meant to be used for a given feature, or a given bug fix. One can create however many branches they need.
-- Once a branch is ready for it (it's been tested, peer-reviewed, etc.), it can be merged back to the main branch. The main branch may be called differently: in Git it's commonly called `main` (formerly `master`); in SVN it's called `trunk`.
-- While coding on their branch, developers are meant to work in small, atomic iterations, called **commits**. All commits have a commit message describing in one sentence what's in there.
-- All commits together are called the **history**, and it's a big deal to write meaningful commits and commit messages in order to keep the project's history clean at a glance, to understand what has been going on and who did what.
-- Some people might be modifying the same pieces on the codebase on different branches, and this could create conflicts when one merges those branches together. Some of those conflicts can obviously only be fixed by a human, and each system has a different way to manage merge conflicts.
+### Common Terms
 
-## Which systems exist?
+Before working with any SCM tool, these are some important terms I should know:
 
-I'll put each specific wording between quotes. The same words may be used for differing notions across the various products.
+- **Repository (Repo):** The main folder that contains my entire project and its version history.
+- **Branch:** A separate copy of the project where I can work on a new feature or fix a bug without affecting the main code.
+- **Main Branch:** The primary version of the project. In Git, this is usually called `main`.
+- **Commit:** A snapshot of the changes I've made. Every commit should include a short and meaningful message describing what changed.
+- **Commit History:** A timeline of all commits made to the project. This makes it easy to understand what changed and who made the changes.
+- **Merge:** The process of combining changes from one branch into another.
+- **Merge Conflict:** A situation where Git cannot automatically combine changes because multiple people modified the same part of a file. These conflicts must be resolved manually.
 
-**SourceSafe** was an early source code management system from Microsoft, which didn't handle branches, merges, or conflicts. You could "check out" a file, which meant no one else was allowed to "check it out" and modify it at the same time. When you were done with it, you could "check in" the file, making it editable again to the others. Not very suitable for large teams that may work on the same file, and longer iterations in a given file. SourceSafe has been discontinued for years and is effectively unused today.
+---
 
-**CVS** was among the first open-source source code management systems in the industry, and used to be wildly popular, but is now essentially obsolete outside of legacy projects. It didn't handle branches, but two people could modify the same file at the same time. People would "update" their whole directory to get everybody else's work before starting, and "commit" their code to the server when they're done. When they would "commit" a file that had been "committed" by someone else since the last time they "updated," the system was not able to merge, so it would consider it a conflict every time, that you would have to manually fix (even if the changes were not on the same lines, for instance).
+# Source Code Management Systems
 
-**SVN** (Subversion) was built upon CVS to handle branches, so a lot of terminology is the same. At one point it was the most used system, and while it has been in decline for many years, it's still maintained and still used, mostly for legacy codebases and in some enterprise settings. When you'd create a branch, it would actually copy-paste the whole codebase into another directory in the code repository; then, you'd try to merge, and it would massively compare each file one by one. Merging algorithms were smarter than the CVS ones, but you still had conflicts on most merges, even those that shouldn't necessarily require a human. When you'd create a "tag" (which is a set version of your code, like "1.2.0"), then the whole codebase would simply be massively copy-pasted into another directory too, but without the intention to merge it back later.
+Over the years, different source code management systems have been developed. Some are now outdated, while others are still widely used.
 
-**Git** doesn't copy-paste the whole codebase when branching and tagging, but stores each commit as a code iteration, in an organized structure that resembles a tree. This allows it to have a much smarter merging algorithm, and it almost never bothers you with conflicts, except for those that really need a human decision. As a result, the cost of branching/merging is very low, and people typically branch/merge a lot, therefore one should never directly work on the main branch, if they're not the only developer on the project. Also: unlike its predecessors, Git allows you to work and commit without needing to talk with a server, which allows you to work on planes, for instance; and it also can work as a decentralized (peer-to-peer) system, although it's very rarely done that way. Git is by far the dominant source code management system in the industry today.
+## SourceSafe
 
-**Mercurial** is very similar to Git in its concepts (although the syntax of its command-line tool is often different). It's more rarely seen in the industry than Git, but is still used, notably by Mozilla. Facebook/Meta, which was long cited as a flagship Mercurial user, has since moved to **Sapling**, an open-sourced, Git-compatible source control tool whose command-line interface was originally based on Mercurial's; internally, much of the underlying system has been rebuilt and is no longer plain Mercurial.
+SourceSafe was Microsoft's early version control system.
 
-## The lowdown on Git
+It allowed only one developer to edit a file at a time by using a **check-out/check-in** process. While this prevented conflicts, it wasn't practical for larger teams where multiple developers needed to work simultaneously.
 
-[Git book](https://git-scm.com/book)
+Today, SourceSafe is obsolete.
 
-A particularity of Git is that it's designed to be usable without a central repository (you can pull code from a friend's computer, and push your work back there, for instance), but not many people use it that way. There is usually a central Git server that the whole team pushes code to and pulls code from; that's why Git is often referred to as a "decentralized" system.
+---
 
-So that you can work without a server, the commit operation is local — no one other than your computer knows you committed something. You can make several commits however you want, but when you want the server to know about it, you must **push** them there.
+## CVS (Concurrent Versions System)
 
-You want to be **pulling** from the repository often if other people may be working on the same branch as you, because each pull performs a merge operation between the code you didn't have and the code you recently committed locally. Therefore, in order to let you push, Git will sometimes demand that you pull first, so that the merge can be done on your computer, and you take care of potential conflicts.
+CVS was one of the earliest open-source version control systems.
 
-Sometimes you may have modified 3 files, but there are only two that you wish to include in the commit you're about to make. Therefore, Git has a notion of an **index** (also called the "staging area"), in which you add your modified files so that they're included in the next commit you register.
+Unlike SourceSafe, multiple developers could modify the same files simultaneously. However, CVS had very limited merge capabilities, so developers frequently had to resolve conflicts manually.
 
-How do you configure the remote servers your local repository talks to? They're called **remotes**, and you can configure however many you need. The main one is typically named `origin` (that's the name that is set up by default when you clone a project from a remote location in the first place). You can also configure however many branches you need and name them as you please; the default branch on new repositories is now commonly `main` (older projects and tooling may still default to `master`).
+Although it played an important role historically, CVS is rarely used today.
 
-Some UI tools for Git exist, but Git is able to do so many things that they don't represent the full magnitude of cases for which you need Git. You really want to learn to use it with the command line. Here are some commands:
+---
+
+## SVN (Subversion)
+
+SVN was created to improve upon CVS.
+
+It introduced proper branching and better merging capabilities. However, branches were created by copying the entire project, making them relatively expensive compared to modern systems.
+
+SVN is still used in some organizations, especially those maintaining older enterprise applications.
+
+---
+
+## Git
+
+Git is currently the most popular source code management system.
+
+Unlike older systems, Git stores changes efficiently without copying the whole project whenever a branch is created. This makes branching and merging much faster.
+
+Some of the reasons I prefer Git include:
+
+- Fast branching and merging
+- Better conflict resolution
+- Ability to work offline
+- Distributed version control
+- Excellent collaboration support
+
+Because branches are lightweight, it's considered good practice to create a new branch for every feature or bug fix instead of working directly on the `main` branch.
+
+---
+
+## Mercurial
+
+Mercurial is another distributed version control system.
+
+Its overall concepts are very similar to Git, although the command syntax is different. While Git dominates the software industry today, Mercurial is still used in some projects.
+
+---
+
+# Understanding Git
+
+Git is designed as a distributed version control system.
+
+This means I can continue committing changes even without an internet connection because commits are stored locally on my computer.
+
+When I'm ready to share my work with others, I simply push my commits to a remote repository.
+
+---
+
+## Local Repository vs Remote Repository
+
+A Git project usually has two versions:
+
+- **Local Repository:** The copy stored on my computer.
+- **Remote Repository:** The copy hosted online, usually on platforms like GitHub.
+
+I work locally first, then synchronize my work with the remote repository.
+
+---
+
+## Push and Pull
+
+Two Git commands I use frequently are:
+
+### Push
+
+Uploads my local commits to the remote repository.
 
 ```bash
-$ git clone url_of_your_remote_repository   # Clone a repository from a remote repository
-$ git add file1 file2    # will add those two files to the index if they were modified
-$ git commit -m "Meaningful commit message"   # will commit those two files (locally)
-$ git add .   # will add all of the modified files to the index at once
-$ git commit -m "Other meaningful commit message"   # will commit all of those files together
-$ git push origin main   # send all commits to the remote server
+git push origin main
 ```
 
-Now, let's do this again, but on a branch:
+### Pull
+
+Downloads the latest changes from the remote repository and merges them into my local branch.
 
 ```bash
-$ git branch my_feature   # Creating the branch
-$ git checkout my_feature   # Changing the codebase so that we're on that branch now
-$ git checkout -b my_feature   # This does the two previous operations in one ;)
-$ git add file1 file2
-$ git commit -m "Meaningful commit message"   # We didn't just commit this on the main branch like last time, but on the my_feature one
-$ git add .
-$ git commit -m "Other meaningful commit message"
-$ git push origin my_feature   # Notice: we're not pushing main anymore, you just create a new remote branch
+git pull origin main
 ```
 
-Next time you want to work on that branch, you should probably do this first:
+Pulling regularly helps me avoid unnecessary merge conflicts.
+
+---
+
+## The Staging Area
+
+Git doesn't automatically include every modified file in a commit.
+
+Instead, it uses a **staging area** (also called the **index**) where I choose exactly which files should be included in my next commit.
+
+For example:
 
 ```bash
-$ git checkout my_feature   # Just making sure you're currently on the right branch!
-$ git pull origin my_feature   # Pulling what your coworkers have done so far.
+git add file1 file2
 ```
 
-And when you're done with the whole feature and want to merge it back:
+or to stage everything:
 
 ```bash
-$ git checkout main
-$ git merge my_feature
+git add .
 ```
 
-One other pretty neat thing: if you have a non-Git directory on your computer and you want to turn it into a Git repository, it's that easy:
+---
+
+# Basic Git Workflow
+
+A typical Git workflow looks like this:
+
+### Clone an existing repository
 
 ```bash
-$ git init   # You're done!
-$ git remote add origin url_of_your_git_server   # So that you can push your code somewhere.
+git clone <repository-url>
 ```
 
-When you're in a Git repository and want to know which files are modified but not in the index, and those that are modified and are in the index, you can run:
+### Stage changes
 
 ```bash
-$ git status
+git add .
 ```
 
-Git provides many more abilities, such as rewriting pieces of the history of the project if you feel the commits were not meaningful enough, displaying the history in visually meaningful ways, and more.
-
-For instance, you can try this on any Git repository to see how a complex history can be viewed nicely:
+### Commit changes
 
 ```bash
-$ git clone https://github.com/loverajoel/jstips.git   # You will need a GitHub account for this to work
-$ cd jstips   # changing your directory into the one you just downloaded
-$ git log --graph --pretty=tformat:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%an %cr)%Creset' --abbrev-commit --date=relative
+git commit -m "Describe what changed"
 ```
 
-Cool, right?
+### Push changes
 
-## What is the difference between Git and GitHub?
+```bash
+git push origin main
+```
 
-Git is everything we've covered so far: a source code management tool, that comes with a command-line tool for its users.
+---
 
-GitHub is one of many services that provide, at the same time:
+# Working with Branches
 
-- a Git repository server to push your code to
-- a web UI to view your repositories, with their files and commits
-- a number of extra features (managing your team and access, CI/CD, issue tracking, and more)
+Instead of working directly on the main branch, I usually create a separate branch for each feature.
 
-Two GitHub features you have to get familiarized with are:
+### Create a branch
 
-- **Forks**: you can fork any repository on GitHub, and it will duplicate the repository's codebase into a repository that you own. For instance, if you fork `twbs/bootstrap`, and your GitHub username is "my_username", then it will create the `my_username/bootstrap` repository, and it will remember where it was forked from. Usually you aren't allowed to push to other people's repositories, so this gives you a repository that you can push to, since you own it.
-- **Pull requests**: once you've pushed your code to your repository (or sometimes to a branch of the main repository, if you're allowed), you can create a pull request towards the main repository's default branch. Somebody in charge of the main repository will review your pull request (potentially asking you to change a couple of things), and merge it if it's suitable to be in the main product.
+```bash
+git branch my_feature
+```
 
-GitHub has competitors, notably **GitLab** and **Bitbucket** (which provide very similar services). Note that Bitbucket dropped support for Mercurial repositories some years ago and is now Git-only. We chose to have you use GitHub because that's where most of the industry is (that way, you'll be able to interact with others on open-source projects), and it's also where tech recruiters typically go to check out what you've been up to.
+or
 
-## Some interesting links about Git
+```bash
+git checkout -b my_feature
+```
 
-- https://try.github.io: an interactive tutorial for beginners.
-- https://docs.github.com/en/get-started: GitHub's own getting-started documentation and resources for learning Git and GitHub.
-- http://nvie.com/posts/a-successful-git-branching-model/: once you master the technical tool, you have many ways to organize your branches according to your project. This well-known article from 2010 introduces **git-flow**, a detailed proposal for organizing collective work with Git. It's still widely referenced today, though many teams now prefer simpler workflows like trunk-based development, especially for projects with frequent, continuous deployment. You should discuss branching strategy each time you start a collaborative project using Git.
-- http://semver.org: now that you can give version numbers to your code iterations, how should you number them? Semantic versioning is the most used versioning scheme.
-- Git from the inside out: https://codewords.recurse.com/issues/two/git-from-the-inside-out
-- Learn Git branching: https://learngitbranching.js.org/
+The second command creates the branch and switches to it immediately.
 
-Thank you.
+---
+
+### Switch branches
+
+```bash
+git checkout my_feature
+```
+
+---
+
+### Push the branch
+
+```bash
+git push origin my_feature
+```
+
+---
+
+### Keep the branch updated
+
+```bash
+git pull origin my_feature
+```
+
+---
+
+### Merge back into the main branch
+
+```bash
+git checkout main
+git merge my_feature
+```
+
+Once the feature is complete, I merge it back into the main branch.
+
+---
+
+# Creating a Git Repository
+
+If I already have a project that isn't using Git, I can initialize it with:
+
+```bash
+git init
+```
+
+Then I connect it to a remote repository:
+
+```bash
+git remote add origin <repository-url>
+```
+
+---
+
+# Checking Repository Status
+
+To see which files have been modified or staged, I use:
+
+```bash
+git status
+```
+
+This command helps me understand the current state of my repository before committing.
+
+---
+
+# Git vs GitHub
+
+Although people often use the names interchangeably, Git and GitHub are different.
+
+## Git
+
+Git is the version control software installed on my computer. It manages my project's history and tracks changes.
+
+## GitHub
+
+GitHub is an online platform that hosts Git repositories.
+
+Besides storing code, GitHub also provides features like:
+
+- Repository hosting
+- Code reviews
+- Team collaboration
+- Issue tracking
+- Pull Requests
+- CI/CD integration
+
+---
+
+# Forks
+
+A **Fork** creates my own copy of someone else's repository on GitHub.
+
+This allows me to experiment, make improvements, or contribute to open-source projects without affecting the original repository.
+
+---
+
+# Pull Requests
+
+After making changes to a branch or fork, I can open a **Pull Request (PR)**.
+
+A pull request asks the project maintainers to review my changes before merging them into the main project.
+
+This review process helps maintain code quality and encourages collaboration.
+
+---
+
+# Other Git Hosting Platforms
+
+Although GitHub is the most popular platform, there are several alternatives, including:
+
+- GitLab
+- Bitbucket
+
+Each platform provides Git hosting with collaboration features, though GitHub remains the industry standard for open-source development.
+
+---
+
+# Helpful Resources
+
+If I want to improve my Git skills, these are excellent resources:
+
+- Git Official Book: https://git-scm.com/book
+- GitHub Documentation: https://docs.github.com/en/get-started
+- Learn Git Branching: https://learngitbranching.js.org/
+- Git From the Inside Out: https://codewords.recurse.com/issues/two/git-from-the-inside-out
+- Semantic Versioning: https://semver.org/
+
+---
+
+# Summary
+
+Git has become the industry-standard version control system because it makes tracking changes, collaborating with other developers, and managing project history much easier.
+
+By understanding repositories, branches, commits, merges, push, pull, and pull requests, I can confidently manage software projects and contribute to team-based or open-source development.
