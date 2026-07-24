@@ -205,7 +205,7 @@ Create a branch called `update_script`. On that branch, inside your student fold
 
 ![Create and push a branch](../resources/create_branch.png)
 
-Good. Your feature work is isolated.
+If you can see another branch on your github like the above image apart from the main branch, and you really pushed there. You've did a great job, Your feature work is isolated.
 
 Now imagine a mentor asks for an urgent fix on `main`:
 
