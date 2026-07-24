@@ -16,47 +16,51 @@ TechNexus_Cohort_2/
 └── Software_Engineering/
 ```
 
-Every track uses the same layout:
+Every track uses the same layout. Mentors stay at the track level. Each workshop gets its own folder with `tasks`, `submissions`, and `resources`:
 
 ```text
 <Track>/
-├── tasks/                 # Workshop task briefs (read these first)
-├── submissions/           # Student assessment submissions
-└── mentors/               # Mentor guidelines and checklists
+├── mentors/                      # Mentor guidelines and checklists
+└── <Workshop-Name>/              # e.g. Example-Workshop
+    ├── tasks/                    # Task briefs for this workshop
+    ├── submissions/              # Student assessment submissions
+    └── resources/                # Extra materials for this workshop
 ```
 
 ### Example layout (per track)
 
 ```text
 <Track>/
-├── tasks/
-│   └── Example/
-│       └── Day-1-task.md
-├── submissions/
-│   └── Example-Workshop/
-│       └── Day-1/
-│           └── <Student_Name>/
-│               ├── <write-up>.md
-│               └── <code files>
-└── mentors/
-    └── mentor_checklist.md
+├── mentors/
+│   └── mentor_checklist.md
+└── Example-Workshop/
+    ├── tasks/
+    │   └── Day-1-task.md
+    ├── submissions/
+    │   └── Day-1/
+    │       └── <Student_Name>/
+    │           ├── <write-up>.md
+    │           └── <code files>
+    └── resources/
 ```
 
 ### Example student submissions
 
 | Track | Example student folder |
 |-------|------------------------|
-| Software Engineering | `Software_Engineering/submissions/Example-Workshop/Day-1/Bilal_Oyeleke_Soliu/` |
-| Blockchain Engineering | `Blockchain_Engineering/submissions/Example-Workshop/Day-1/Bonson_Adem_Alo/` |
-| AI / ML | `AI_ML/submissions/Example-Workshop/Day-1/Khin_Pwint_Yati_Maung/` |
-| CyberSecurity & Networking | `CyberSecurity_Networking/submissions/Example-Workshop/Day-1/Karim_Ismail_Abdellah_Mohammed/` |
+| Software Engineering | `Software_Engineering/Example-Workshop/submissions/Day-1/Bilal_Oyeleke_Soliu/` |
+| Blockchain Engineering | `Blockchain_Engineering/Example-Workshop/submissions/Day-1/Bonson_Adem_Alo/` |
+| AI / ML | `AI_ML/Example-Workshop/submissions/Day-1/Khin_Pwint_Yati_Maung/` |
+| CyberSecurity & Networking | `CyberSecurity_Networking/Example-Workshop/submissions/Day-1/Karim_Ismail_Abdellah_Mohammed/` |
 
 ### Naming conventions
 
 | Item | Pattern | Example |
 |------|---------|---------|
-| Task file | `tasks/<Workshop>/Day-<n>-task.md` | `tasks/Example/Day-1-task.md` |
-| Submission day folder | `submissions/<Workshop-Name>/Day-<n>/` | `submissions/Example-Workshop/Day-1/` |
+| Workshop folder | `<Workshop-Name>` | `Example-Workshop` |
+| Task file | `<Workshop-Name>/tasks/Day-<n>-task.md` | `Example-Workshop/tasks/Day-1-task.md` |
+| Submission day folder | `<Workshop-Name>/submissions/Day-<n>/` | `Example-Workshop/submissions/Day-1/` |
+| Resources folder | `<Workshop-Name>/resources/` | `Example-Workshop/resources/` |
 | Student folder | `<First_Middle_Last>` (use underscores) | `Bilal_Oyeleke_Soliu` |
 
 ---
@@ -94,29 +98,29 @@ git push origin main
 Open the task for your track, workshop, and day:
 
 ```text
-Software_Engineering/tasks/Example/Day-1-task.md
-Blockchain_Engineering/tasks/Example/Day-1-task.md
-AI_ML/tasks/Example/Day-1-task.md
-CyberSecurity_Networking/tasks/Example/Day-1-task.md
+Software_Engineering/Example-Workshop/tasks/Day-1-task.md
+Blockchain_Engineering/Example-Workshop/tasks/Day-1-task.md
+AI_ML/Example-Workshop/tasks/Day-1-task.md
+CyberSecurity_Networking/Example-Workshop/tasks/Day-1-task.md
 ```
 
-Complete everything the task asks for before submitting.
+Supporting materials (if any) live in that workshop’s `resources/` folder. Complete everything the task asks for before submitting.
 
 ### 5. Navigate to the Correct Submission Folder
 
-Submissions are organized by **track → workshop → day**:
+Submissions are organized by **track → workshop → submissions → day**:
 
 ```bash
-cd <Track>/submissions/<Workshop-Name>/Day-<day_number>
+cd <Track>/<Workshop-Name>/submissions/Day-<day_number>
 ```
 
 Examples:
 
 ```bash
-cd Software_Engineering/submissions/Example-Workshop/Day-1
-cd Blockchain_Engineering/submissions/Example-Workshop/Day-1
-cd AI_ML/submissions/Example-Workshop/Day-1
-cd CyberSecurity_Networking/submissions/Example-Workshop/Day-1
+cd Software_Engineering/Example-Workshop/submissions/Day-1
+cd Blockchain_Engineering/Example-Workshop/submissions/Day-1
+cd AI_ML/Example-Workshop/submissions/Day-1
+cd CyberSecurity_Networking/Example-Workshop/submissions/Day-1
 ```
 
 ### 6. Create Your Personal Folder
@@ -136,7 +140,7 @@ mkdir Bilal_Oyeleke_Soliu
 Your full submission path should look like:
 
 ```text
-Software_Engineering/submissions/Example-Workshop/Day-1/Bilal_Oyeleke_Soliu/
+Software_Engineering/Example-Workshop/submissions/Day-1/Bilal_Oyeleke_Soliu/
 ```
 
 ### 7. Add Your Task Files
@@ -185,7 +189,7 @@ Mentors may leave comments or request changes. Update your files, push again to 
 ## Additional Notes for Students
 
 - Submit only inside **your own** student folder. Do not edit other students’ submissions.
-- Do not modify task files under `tasks/` unless a mentor asks you to.
+- Do not modify files under `tasks/` or `resources/` unless a mentor asks you to.
 - Make sure your work is complete and readable before opening a PR.
 - Sync with `upstream` often so your PR stays easy to merge.
 - If you get stuck, ask your facilitator or mentor for help.
@@ -194,48 +198,64 @@ Mentors may leave comments or request changes. Update your files, push again to 
 
 ## For Mentors: Managing Tasks
 
-See also: [`Software_Engineering/mentors/mentor_checklist.md`](Software_Engineering/mentors/mentor_checklist.md)
+See also the mentor checklist in your track, e.g. [`Software_Engineering/mentors/mentor_checklist.md`](Software_Engineering/mentors/mentor_checklist.md).
 
-### 1. Adding a Task
+### 1. Creating a Workshop Folder
 
-1. Navigate to your track’s `tasks/` folder.
-2. Create (or use) a workshop folder, e.g. `Example/` or `Workshop-1/`.
-3. Add a markdown file named `Day-<day_number>-task.md`.
-4. Include clear objectives, instructions, deadline, and resources.
-5. Commit and push.
+For each new workshop, create this structure inside your track:
+
+```text
+<Track>/<Workshop-Name>/
+├── tasks/
+├── submissions/
+└── resources/
+```
 
 Example:
 
 ```bash
-git add Software_Engineering/tasks/Example/Day-1-task.md
-git commit -m "Add Software Engineering Example Day-1 task"
+mkdir -p Software_Engineering/Workshop-1/{tasks,submissions,resources}
+```
+
+### 2. Adding a Task
+
+1. Add a markdown file named `Day-<day_number>-task.md` inside `<Workshop-Name>/tasks/`.
+2. Include clear objectives, instructions, deadline, and links.
+3. Place any supporting files (datasets, slides, starter code) in `<Workshop-Name>/resources/`.
+4. Commit and push.
+
+Example:
+
+```bash
+git add Software_Engineering/Example-Workshop/tasks/Day-1-task.md
+git commit -m "Add Software Engineering Example-Workshop Day-1 task"
 git push origin main
 ```
 
-### 2. Preparing the Submission Folder
+### 3. Preparing the Submission Folder
 
-Before students submit, create the matching day folder under `submissions/`:
+Before students submit, create the matching day folder:
 
 ```text
-Software_Engineering/submissions/<Workshop-Name>/Day-<day_number>/
+<Track>/<Workshop-Name>/submissions/Day-<day_number>/
 ```
 
 Example:
 
 ```text
-Software_Engineering/submissions/Example-Workshop/Day-1/
+Software_Engineering/Example-Workshop/submissions/Day-1/
 ```
 
 Students will then create their personal folders inside that day folder:
 
 ```text
-Software_Engineering/submissions/Example-Workshop/Day-1/<Student_Name>/
+Software_Engineering/Example-Workshop/submissions/Day-1/<Student_Name>/
 ```
 
-### 3. Reviewing Student Submissions
+### 4. Reviewing Student Submissions
 
 1. Open the **Pull requests** tab on GitHub.
-2. Confirm the path matches: `.../submissions/<Workshop>/Day-<n>/<Student_Name>/`
+2. Confirm the path matches: `<Track>/<Workshop-Name>/submissions/Day-<n>/<Student_Name>/`
 3. Review completeness, correctness, and clarity against the task brief.
 4. Leave constructive comments if changes are needed.
 5. Approve and merge when the submission meets expectations.

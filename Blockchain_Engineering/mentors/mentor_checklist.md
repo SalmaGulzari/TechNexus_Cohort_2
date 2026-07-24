@@ -1,24 +1,39 @@
 # TechNexus Cohort 2 — Mentor Checklist (Blockchain Engineering)
 
-This checklist ensures consistency in reviewing student submissions and managing tasks effectively.
+This checklist ensures consistency in reviewing student submissions and managing workshops effectively.
+
+## Workshop Setup
+
+For each workshop, create this structure inside the track:
+
+```text
+Blockchain_Engineering/<Workshop-Name>/
+├── tasks/
+├── submissions/
+└── resources/
+```
+
+Example: `Blockchain_Engineering/Example-Workshop/`
 
 ## Task Management
 
-- Create a `Day-<day_number>-task.md` file in the appropriate `tasks/<Workshop>/` folder.
+- Create a `Day-<day_number>-task.md` file in `<Workshop-Name>/tasks/`.
 - Clearly define the objectives, requirements, and success criteria for the task.
 - Include links to relevant resources or documentation.
+- Place supporting materials (datasets, slides, starter code) in `<Workshop-Name>/resources/`.
 - Push the task to the repository as early as possible.
 
 ## Prepare the Submission Folder
 
-- Navigate to `submissions/<Workshop-Name>/`.
+- Navigate to `<Workshop-Name>/submissions/`.
 - If a task is assigned for a specific day, **manually create the corresponding day subfolder** `Day-<day_number>/`.
-- Example: `submissions/Example-Workshop/Day-1/`
+- Example: `Blockchain_Engineering/Example-Workshop/submissions/Day-1/`
 
 ## Reviewing Submissions
 
 - Check the **Pull Requests (PRs)** tab for new student submissions.
-- Ensure students follow the correct directory structure: `submissions/<Workshop-Name>/Day-<n>/<Student_Name>/`
+- Ensure students follow the correct directory structure:
+  `<Workshop-Name>/submissions/Day-<n>/<Student_Name>/`
 - Review the code quality, completeness, and adherence to task requirements.
 - Provide constructive feedback via PR comments.
 - Approve and merge PRs if the submission meets expectations.
