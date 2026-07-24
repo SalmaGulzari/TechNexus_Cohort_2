@@ -130,4 +130,4 @@ GitHub has competitors, notably **GitLab** and **Bitbucket** (which provide very
 - Git from the inside out: https://codewords.recurse.com/issues/two/git-from-the-inside-out
 - Learn Git branching: https://learngitbranching.js.org/
 
-All of your school projects must make proper use of Git, and must be pushed to your GitHub account.
+Thank you.
