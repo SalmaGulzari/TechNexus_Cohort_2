@@ -26,6 +26,16 @@ That folder is your workspace root. Build every file and directory inside it.
 
 Please do not touch another student’s folder, and do not edit anything under `tasks/`.
 
+## Screenshot Proof
+
+For every task below, save a screenshot as proof that you completed it. Upload each screenshot into your student folder, commit it, and push it with the rest of your work.
+
+**Naming rule:** use `task<number>.<extension>` — for example `task1.png`, `task2.jpg`, `task3.png`.
+
+Accepted formats: `.png`, `.jpg`, or `.jpeg`.
+
+Make sure your screenshot clearly shows what is being checked. Blurry or cropped screenshots may be sent back for resubmission.
+
 ---
 
 ## Task Instructions
@@ -95,6 +105,16 @@ git push origin main
 
 You are ready when your fork shows `README.md` in your Day-1 folder with the text `My first readme`.
 
+**Screenshot proof — save as `task1.png`**
+
+Capture your **fork on GitHub** showing:
+
+- your student folder path under `submissions/Day-1/`
+- `README.md` visible inside that folder
+- the file content `My first readme` when opened (or the commit `My first commit` in the history)
+
+This proves your fork, clone, first commit, and push all worked.
+
 ---
 
 ### 2. Own Your Submission Folder
@@ -109,6 +129,12 @@ Your folder should now look like this:
 <Your_First_Middle_Last>/
 └── README.md
 ```
+
+**Screenshot proof — save as `task2.png`**
+
+Capture **`README.md` open on GitHub** in your student folder, showing your **full name** as the file content. The commit message should also be visible if possible.
+
+This proves you edited, committed, and pushed an update to your own folder.
 
 ---
 
@@ -151,6 +177,12 @@ You should now have:
 - `js/main.js`
 - `js/index.js`
 
+**Screenshot proof — save as `task3.png`**
+
+Capture your **student folder on GitHub** showing the full file tree: `bash/`, `c/`, and `js/` directories with all required files inside. The commit `Starting to code today, so cool` should be visible in the commit history if possible.
+
+This proves you created the project structure and pushed it successfully.
+
 ---
 
 ### 4. Learn to Work on a Branch
@@ -184,6 +216,12 @@ Now imagine a mentor asks for an urgent fix on `main`:
 
 After this section, you should understand why `update_script` and `main` can tell different stories about the same files.
 
+**Screenshot proof — save as `task4.png`**
+
+Capture the **branch dropdown on GitHub** (or the Branches page on your fork) showing both `main` and `update_script`. Switch to `update_script` and make sure `bash/98` is visible in the file tree.
+
+This proves you created a feature branch, pushed it, and applied separate changes on `main`.
+
 ---
 
 ### 5. Stay in Sync with GitHub
@@ -202,6 +240,12 @@ Then return to your terminal and:
 4. Commit with the message `How to be up to date in git` and push
 
 You should end with an updated `README.md` and a new `up_to_date` file.
+
+**Screenshot proof — save as `task5.png`**
+
+Capture your **terminal** showing the git command you used to pull/fetch remote changes (for example `git pull origin main`) with a successful output. If possible, also show `up_to_date` visible in your student folder on GitHub.
+
+This proves you synced local work with remote changes and recorded the command you used.
 
 ---
 
@@ -233,6 +277,17 @@ When you are done, `main` should include:
 
 with no conflict markers left behind.
 
+**Screenshot proof — save as `task6.png`**
+
+Capture your **terminal** showing either:
+
+- the merge conflict message (`CONFLICT (content): Merge conflict in bash/technexus`), or
+- the successful merge commit after you resolved it and ran `git push`
+
+If you took both, combine them into one screenshot or use the resolved state as your final proof.
+
+This proves you encountered and handled a real merge conflict.
+
 ---
 
 ### 7. Protect the Repository with `.gitignore`
@@ -242,6 +297,12 @@ Not every file belongs in Git. Backup files, secrets, and local editor junk shou
 Create a `.gitignore` at the root of your student folder and add a rule that ignores files ending with `~` (common Emacs backup files).
 
 Commit and push it.
+
+**Screenshot proof — save as `task7.png`**
+
+Capture **`.gitignore` open on GitHub** in your student folder, showing the rule that ignores `~` files (for example `*~`).
+
+This proves you added ignore rules and pushed them with your submission.
 
 ---
 
@@ -268,6 +329,19 @@ When your folder is complete on your fork:
 
 ![Open a pull request](../resources/open_pull_request.png)
 
+**Screenshot proof — save as `task8.png`**
+
+Capture your **opened Pull Request page** showing:
+
+- the PR title
+- base repository `TechNexusClub/TechNexus_Cohort_2`
+- your fork as the compare branch
+- the list of files changed in your student folder
+
+This proves you completed the open-source contribution flow end to end.
+
+> After you take `task8.png`, add it to your student folder, commit, and push so the screenshot is included in the PR (or in a quick follow-up commit on the same PR branch).
+
 ---
 
 ## Expected Final Folder Structure
@@ -277,6 +351,14 @@ Software_Engineering/Mastering_Git_and_Open_Source_Contribution/submissions/Day-
 ├── README.md
 ├── up_to_date
 ├── .gitignore
+├── task1.png
+├── task2.png
+├── task3.png
+├── task4.png
+├── task5.png
+├── task6.png
+├── task7.png
+├── task8.png
 ├── bash/
 │   ├── technexus
 │   ├── school
@@ -286,6 +368,8 @@ Software_Engineering/Mastering_Git_and_Open_Source_Contribution/submissions/Day-
 ```
 
 Remember: `js/` should no longer be there after the hot fix.
+
+Your screenshot filenames may use `.jpg` or `.jpeg` instead of `.png`, as long as they follow the `task1`, `task2`, … naming pattern.
 
 ---
 
