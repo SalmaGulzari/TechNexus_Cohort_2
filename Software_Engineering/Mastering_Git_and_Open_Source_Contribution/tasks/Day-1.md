@@ -379,12 +379,12 @@ Submit your Pull Request by **[DAY / TIME]**.
 
 ## Resources
 
-- [Githu Cheetsheet](https://education.github.com/git-cheat-sheet-education.pdf)
+- [Github Cheetsheet](https://education.github.com/git-cheat-sheet-education.pdf)
 - [Git Handbook (GitHub)](https://guides.github.com/introduction/git-handbook/)
 - [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
 - [Git Branching – Basic Branching and Merging](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
 - [gitignore documentation](https://git-scm.com/docs/gitignore)
-- Workshop images and extras: `Software_Engineering/Mastering_Git_and_Open_Source_Contribution/resources/`
+- Workshop Resources and Demo Images: `Software_Engineering/Mastering_Git_and_Open_Source_Contribution/resources/`
 
 ---
 
