@@ -51,14 +51,14 @@ Next, create a Personal Access Token so you can authenticate when you push code:
 
 When you are done, your token screen should look similar to this:
 
-![Personal Access Token example](../resources/personal_access_token.png)
+Personal Access Token example
 
 Now fork the TechNexus Cohort 2 repository:
 
 1. Open [https://github.com/TechNexusClub/TechNexus_Cohort_2](https://github.com/TechNexusClub/TechNexus_Cohort_2)
 2. Click **Fork**
 
-![Fork the repository](../resources/fork_repository.png)
+Fork the repository
 
 Clone your fork:
 
@@ -129,10 +129,15 @@ Your folder should now look like this:
 <Your_First_Middle_Last>/
 └── README.md
 ```
+Then when you run the command "cat README.md". You should see you full name. See example below:
+```
+cat README.md
+Bilal Oyeleke Soliu
+```
 
 **Screenshot proof — save as `task2.png`**
 
-Capture **`README.md` open on GitHub** in your student folder, showing your **full name** as the file content. The commit message should also be visible if possible.
+Capture `**README.md` open on GitHub** in your student folder, showing your **full name** as the file content. The commit message should also be visible if possible.
 
 This proves you edited, committed, and pushed an update to your own folder.
 
@@ -150,23 +155,19 @@ Still inside:
 
 1. Create these directories: `bash`, `c`, `js`
 2. Create these empty files:
-   - `c/c_is_fun.c`
-   - `js/main.js`
-   - `js/index.js`
+  - `c/c_is_fun.c`
+  - `js/main.js`
+  - `js/index.js`
 3. Create `bash/technexus` with exactly:
-
-   ```bash
+  ```bash
    #!/bin/bash
    echo "TechNexus"
-   ```
-
+  ```
 4. Create `bash/school` with exactly:
-
-   ```bash
+  ```bash
    #!/bin/bash
    echo "Albukhary International University"
-   ```
-
+  ```
 5. Stage everything, commit with the message `Starting to code today, so cool`, and push to your fork.
 
 You should now have:
@@ -203,7 +204,7 @@ Create a branch called `update_script`. On that branch, inside your student fold
 4. Commit with the message `My personal work`
 5. Push the branch to your fork
 
-![Create and push a branch](../resources/create_branch.png)
+Create and push a branch
 
 If you can see another branch on your github like the above image apart from the main branch, and you really pushed there. You've did a great job, Your feature work is isolated.
 
@@ -230,7 +231,7 @@ Contributors do not work alone. Someone else — or even you, from the browser �
 
 For this part only, edit `README.md` in your student folder from the **GitHub website** on your fork’s `main` branch. This is the only time today you should commit from the GitHub UI.
 
-![Edit a file on GitHub](../resources/edit_on_github.png)
+Edit a file on GitHub
 
 Then return to your terminal and:
 
@@ -266,7 +267,7 @@ Expect something like this:
 CONFLICT (content): Merge conflict in bash/technexus
 ```
 
-![Merge conflict example](../resources/merge_conflict.png)
+Merge conflict example
 
 Resolve it by keeping the version from `update_script`, finish the merge, and push.
 
@@ -300,7 +301,7 @@ Commit and push it.
 
 **Screenshot proof — save as `task7.png`**
 
-Capture **`.gitignore` open on GitHub** in your student folder, showing the rule that ignores `~` files (for example `*~`).
+Capture `**.gitignore` open on GitHub** in your student folder, showing the rule that ignores `~` files (for example `*~`).
 
 This proves you added ignore rules and pushed them with your submission.
 
@@ -316,18 +317,16 @@ When your folder is complete on your fork:
 2. Go to **Pull requests** → **New pull request**
 3. Compare across forks if needed
 4. Set:
-   - **base:** `TechNexusClub/TechNexus_Cohort_2` → `main`
-   - **compare:** your fork → the branch with your finished work (usually `main`)
+  - **base:** `TechNexusClub/TechNexus_Cohort_2` → `main`
+  - **compare:** your fork → the branch with your finished work (usually `main`)
 5. Title it clearly, for example:
-
-   ```text
+  ```text
    Add Day-1 Git fundamentals submission for <Your_First_Middle_Last>
-   ```
-
+  ```
 6. In the description, briefly say what you practiced.
 7. Open the PR and wait for review.
 
-![Open a pull request](../resources/open_pull_request.png)
+Open a pull request
 
 **Screenshot proof — save as `task8.png`**
 
