@@ -10,8 +10,9 @@ Instead of contributing to a shared repository, you will build and manage **your
 
 ## Deadline
 
-### The Deadline for this Assessment is 30th July, 2026 at 11AM Malysia Time
-This is the submission form: 
+### The Deadline for this Assessment is 31st July, 2026 at 11AM Malysia Time. 
+
+This is the submission form:  [https://forms.gle/zjcouGafkcZGYFPJ7](https://forms.gle/zjcouGafkcZGYFPJ7) 
 
 ---
 
@@ -65,7 +66,7 @@ For every task below, save a screenshot showing proof that you completed the ste
 ### Task 1: Create Your Public Repository & Initial Setup
 
 1. Log into your account at [GitHub](https://github.com).
-2. Click the `**+*`* icon in the top right corner and select **New repository**.
+2. Click the `**+`** icon in the top right corner and select **New repository**.
 3. Fill in the following details:
   - **Repository name:** `technexus-git-fundamentals`
   - **Description:** `TechNexus Cohort 2 - Day 1 Git & GitHub Fundamentals`
